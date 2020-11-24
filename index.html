@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+	<title>Тестовое задание</title>
+</head>
+
+<body>
+	<!--          НЕВЕРНОЕ ОТОБРАЖЕНИЕ ИЗ-ЗА СЛАЙДЕРА(АНИМАЦИИ)       -->
+	<!--       РЕшил называется слайдер сделать, ага, сделал...       -->
+	<div id="slide">
+		<div style="max-width:100vw;  overflow: hidden;">
+			<img class="slide-single" src="img/2800x1600-Men-Captain-Arizona.jpg" alt="">
+			<img class="slide-single" src="img/2800x1600-Men-Captain-Midnight.jpg" alt="">
+			<img class="slide-single" src="img/2800x1600-Men-Commander-BlackMatte.jpg" alt="">
+		</div>
+
+		<div class="container">
+			<div class="intro_inner">
+				<h1 class="intro_title">Test Site</h1>
+				<a onclick="swap()" id="btn" href="#" class="button">Swipe</a>
+			</div>
+		</div>
+	</div>
+
+	<header class="header">
+		<div class="header_inner">
+
+			<div class="logo">
+				<h2>Liebre</h2>
+
+			</div>
+
+			<nav class="nav">
+				<a class="nav_link" href="#">About</a>
+				<a class="nav_link" href="#">Work</a>
+				<a class="nav_link" href="#">Primer</a>
+				<a class="nav_link" href="#">Log In</a>
+			</nav>
+		</div>
+	</header>
+
+	<!-- АСИНХРОННЫЙ ЗАПРОС -->
+	<h2 id="h2">По сути: запрос есть, результат выведен(правда некорректно, да и без структуры, но он есть...), я думаю это по большей части работа бэкендера(выполнять запросы) </h2>
+	<div id="asnync">
+		<div id="zapros"></div>
+	</div>
+
+	<script>
+		window.addEventListener("load", function() {
+			var request = new XMLHttpRequest();
+			request.open('GET', 'https://randomuser.me/api/', true);
+			request.addEventListener('readystatechange', function() {
+				if ((request.readyState == 4) && (request.status == 200)) {
+					var welcome = document.getElementById('zapros');
+					console.log(welcome.innerHTML = request.responseText); //без парсинга
+				}
+			});
+			request.send();
+		});
+
+	</script>
+	<!------------------------->
+
+	<script src="script.js"></script>
+</body>
+
+</html>
